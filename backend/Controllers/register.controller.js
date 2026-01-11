@@ -29,7 +29,7 @@ export const registerUser = async (req, res) => {
     // 4️: Generate JWT
     const token = jwt.sign(
       {
-        userId: newUser._id,
+        _id: newUser._id,
         email: newUser.email,
         role: newUser.role, // IMPORTANT
       },
@@ -52,7 +52,7 @@ res.cookie("token", token, {
       message: 'User registered successfully ',
       token,
       user: {
-        id: newUser._id,
+        _id: newUser._id,
         name: newUser.name,
         email: newUser.email,
         role: newUser.role,

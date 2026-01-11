@@ -30,6 +30,8 @@ function Navbar() {
     }
   };
 
+
+
   const navLinkClass = ({ isActive }) =>
     isActive
       ? "text-red-600 text-xl roboto-condensed font-bold border-b-2 border-red-600"
@@ -52,6 +54,7 @@ function Navbar() {
           LogOut
         </button>) }
 
+ 
 
             {/* User icon and name */}
             {location.pathname !== '/login'&& location.pathname !== '/' && location.pathname !== '/register'&& userName && (
@@ -75,6 +78,7 @@ function Navbar() {
             <NavLink to="/about" className={navLinkClass}>About</NavLink>
             <NavLink to="/services" className={navLinkClass}>Services</NavLink>
             <NavLink to="/contact" className={navLinkClass}>Contact</NavLink>
+            <NavLink to="/profile" className={navLinkClass}>Profile</NavLink>
           </div>
 
           {/* Hamburger Button (Mobile) */}

@@ -23,9 +23,9 @@ export const loginUser = async (req, res) => {
     // 3️: Create JWT
     const token = jwt.sign(
       {
-        userId: existingUser._id,
+        _id: existingUser._id,
         email: existingUser.email,
-        role: existingUser.role, // 🔥 ROLE ADDED
+        role: existingUser.role, //  ROLE ADDED(role basis pe token ki need thi nahi phir bhi for future)
       },
       process.env.JWT_SECRET,
       { expiresIn: process.env.JWT_EXPIRES_IN || "7d" }

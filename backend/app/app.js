@@ -23,9 +23,6 @@ app.use(cors({
 //Middleware to parse JSON requests
 app.use(express.json());
 
-//json middleware
-import profile from '../Routes/profile.routes.js';
-app.use('/api/profile', profile);
 
 
 //Routes setting
@@ -38,9 +35,22 @@ app.use('/api/register', register);
 import logout from '../Routes/logout.routes.js'
 app.use('/api/logout',logout);
 
+import del from '../Routes/delete.routes.js';
+app.use('/api/delete',del);
+
+import update from '../Routes/update.routes.js';
+app.use('/api/update',update);
+
+import user from '../Routes/profile.routes.js'
+app.use('/api/me',user);
+
+
+//normal check for backend
 app.get('/',(req,res)=>{
     res.send("hello world");
 })
+
+
 //Database connection
 //IIFE 
 ;(async () => {

@@ -8,7 +8,7 @@ const ProtectedLayout = () => {
 
   useEffect(() => {
     axios
-      .get("/api/profile", { withCredentials: true })
+      .get("/api/me", { withCredentials: true })
       .then(() => {
         setAuthorized(true);
         setLoading(false);

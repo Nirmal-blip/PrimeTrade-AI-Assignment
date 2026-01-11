@@ -5,11 +5,12 @@ import About from './Components/About'
 import Sports from './Components/Sports';
 import Playground from './Components/Playground';
 import InterestedField from './Components/InterestedField';
-import Login from './Components/Login';
+import Login from './Auth/Login';
 import ProtectedLayout from './Components/ProtectedLayout';
-import Register from './Components/RegisterUser';
+import Register from './Auth/RegisterUser';
 import Services from './Components/Services'
 import Contact from './Components/Contact'
+import Profile from './Components/Profile'
 function App() {
   return (
     <Router>
@@ -31,6 +32,7 @@ function App() {
           <Route path="/explore" element={<><Sports /><Playground /><InterestedField /></>} />
           <Route path="/playground" element={<Playground />} />
           <Route path="/interested-field" element={<InterestedField />} />
+          <Route path="/profile" element ={<Profile/>}/>
         </Route>
       </Routes>
     </Router>
