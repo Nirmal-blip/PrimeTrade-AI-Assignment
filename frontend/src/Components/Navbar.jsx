@@ -2,12 +2,16 @@ import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
-import {Link} from "react-router-dom";
+// import {Link} from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
+
+  const navigate=useNavigate();//putting it in navigate variable
 
   const [userName, setUserName] = useState("");
   useEffect(() => {
@@ -15,6 +19,16 @@ function Navbar() {
     console.log("Stored userName:", storedName); // Debugging line
     if (storedName) setUserName(storedName);
   }, []);
+
+  const handleLogout = async () => {
+    try {
+      await axios.post('/api/logout', {}, { withCredentials: true });
+      console.log('logout hit')
+      navigate('/login');
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const navLinkClass = ({ isActive }) =>
     isActive
@@ -28,6 +42,15 @@ function Navbar() {
         <div className="flex justify-between h-20 items-center">
           {/* User Info, Logo and Title */}
           <div className="flex items-center gap-3 flex-shrink-0">
+
+  {/* logout button */}
+          {location.pathname !== '/login'&& location.pathname !== '/' && location.pathname !== '/register' && (
+          <button
+          onClick={handleLogout}
+          className="ml-[-25%] bg-gradient-to-r from-red-500 to-red-700 hover:scale-105 transition ease-in-out duration-300 p-1 text-white border rounded-xl"
+        >
+          LogOut
+        </button>) }
 
 
             {/* User icon and name */}

@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import { hashPassword } from '../Methods/bcryptPassword.js';
 
 export const registerUser = async (req, res) => {
-  const { name, email, password ,role} = req.body;
+  const { name, email, password , role} = req.body;
 
   try {
     // 1️: Check if user exists
@@ -23,6 +23,7 @@ export const registerUser = async (req, res) => {
       name,
       email,
       password: hashedPassword,
+      role,
     });
 
     // 4️: Generate JWT
@@ -54,6 +55,7 @@ res.cookie("token", token, {
         id: newUser._id,
         name: newUser.name,
         email: newUser.email,
+        role: newUser.role,
       },
     });
 

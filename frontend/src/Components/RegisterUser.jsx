@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 function RegisterUser() {
   const navigate = useNavigate();
-  const [role, setRole] = useState('user'); // 🔥 UI role selector
+  const [role, setRole] = useState('admin'); // 🔥 UI role selector
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -31,7 +31,7 @@ function RegisterUser() {
         '/api/register',
         {
           ...formData,
-          role, // 🔥 sending role (backend may override)
+          role:role,
         },
         { withCredentials: true }
       );

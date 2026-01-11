@@ -35,6 +35,9 @@ app.use('/api/login', login);
 import register from '../Routes/register.routes.js';
 app.use('/api/register', register);
 
+import logout from '../Routes/logout.routes.js'
+app.use('/api/logout',logout);
+
 app.get('/',(req,res)=>{
     res.send("hello world");
 })

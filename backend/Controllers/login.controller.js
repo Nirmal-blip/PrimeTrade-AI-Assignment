@@ -5,7 +5,7 @@ import { comparePassword } from '../Methods/bcryptPassword.js';
 export const loginUser = async (req, res) => {
   console.log("Login route hit ");
 
-  const { email, password ,role} = req.body;
+  const { email, password } = req.body;
 
   try {
     // 1️: Find user
@@ -48,6 +48,7 @@ export const loginUser = async (req, res) => {
         id: existingUser._id,
         name: existingUser.name,
         email: existingUser.email,
+        role: existingUser.role,
       },
     });
 
